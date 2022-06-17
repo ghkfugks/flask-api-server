@@ -1,5 +1,4 @@
-from crypt import methods
-from flask import Flask , request
+from flask import Flask, jsonify , request
 from http import HTTPStatus
 
 
@@ -10,7 +9,9 @@ def add():
     # 클라이언트로부터 두 수를 받는다.
     data = request.get_json()
     ret = data['x'] + data['y']
-    return 
+    result = {"result" : ret}
+
+    return jsonify(result)
 
 if __name__ == '__main__':
     app.run()
